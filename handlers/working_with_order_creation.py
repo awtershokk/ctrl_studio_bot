@@ -17,7 +17,7 @@ def working_with_order_creation(call, bot):
     order_price = info_product['Расчетная стоимость']
     order_status = info_product['Статус']
     insert_order(conn, client_username, client_name, order_category, order_type, order_deadline, order_price, order_status)
-    message_for_admin = f"Категория работы: {info_product['Категория работы']}\nТип работы: {info_product['Тип работы']}\nСроки: {info_product['Сроки']}\nРасчетная стоимость: {info_product['Расчетная стоимость']}\nСтатус: {info_product['Статус']}"
+    message_for_admin = f"Заказчик {client_username}: Категория работы: {info_product['Категория работы']}\nТип работы: {info_product['Тип работы']}\nСроки: {info_product['Сроки']}\nРасчетная стоимость: {info_product['Расчетная стоимость']}\nСтатус: {info_product['Статус']}"
 
     for id in admin:
         bot.send_message(chat_id=id, text=message_for_admin)

@@ -5,7 +5,7 @@ DATABASE_NAME = 'orders.db'
 def create_connection():
     conn = None
     try:
-        conn = sqlite3.connect(DATABASE_NAME)
+        conn = sqlite3.connect(DATABASE_NAME, check_same_thread=False)
     except sqlite3.Error as e:
         print(e)
     return conn

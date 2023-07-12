@@ -6,6 +6,7 @@ from handlers.help_handler import help_handler
 from keyboards.main_reply_keyboard import create_reply_keyboard
 from keyboards.order_inline_keyboards import select_order_category, select_order_type, select_order_deadline
 from handlers.сreate_order import choise_order_category,  choise_order_type, choise_order_deadline, last_create_order_message
+from handlers.working_with_order_creation import working_with_order_creation
 
 load_dotenv()
 token = os.getenv('BOT_TOKEN')
@@ -38,5 +39,10 @@ def handle_select_deadline(call):
 def handle_create_totalmessage(call):
     choise_order_deadline(call, bot)
     last_create_order_message(call, bot)
+
+@bot.callback_query_handler(func=lambda call: call.data == 'create_order')
+def handle_create_order(call):
+    working_with_order_creation(call, bot)
+
 
 bot.polling()

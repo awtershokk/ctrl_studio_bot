@@ -1,4 +1,5 @@
 from keyboards.order_inline_keyboards import select_order_type, select_order_deadline
+from telebot import types
 
 info_product = {
     'Категория работы': None,
@@ -59,10 +60,19 @@ def last_create_order_message(call, bot):
     ttl4 = f"*Тип работы* - {info_product['Тип работы']}\n"
     ttl5 = f"*Сроки* - {info_product['Сроки']}\n"
     ttl6 = f"*Расчетная стоимость* - {info_product['Расчетная стоимость']}\n"
-    ttl7 = '*(Окончательная стоимость зависит от сложности работы, и может отличаться от расчетной)*'
+    ttl7 = '*(Окончательная стоимость зависит от сложности работы, и может отличаться от расчетной, как в меньшую, так и в большую сторону)*'
     total_message = ttl1 + ttl2 + ttl3 + ttl4 + ttl5 + ttl6 + ttl7
 
-    bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=total_message, parse_mode="Markdown")
+    total_keyboard = types.InlineKeyboardMarkup()
+
+    create_order_button = types.InlineKeyboardButton("✅ Создать заказ", callback_data='create_order')
+    save_to_draft_button = types.InlineKeyboardButton("📂 Сохранить черновик", callback_data='save_to_draft')
+    edit_order_button = types.InlineKeyboardButton("🔁 Изменить заказ", callback_data='edit_order')
+
+    total_keyboard.add(create_order_button, edit_order_button)
+    total_keyboard.add(save_to_draft_button)
+
+    bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=total_message, parse_mode="Markdown", reply_markup=total_keyboard)
 
 
 

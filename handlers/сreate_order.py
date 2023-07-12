@@ -6,7 +6,7 @@ info_product = {
     'Сроки': None,
     'Расчетная стоимость': None
 }
-categoru_texts= {
+category_texts= {
     'diplom': ['Дипломная работа', 9000],
     'kursovaya': ['Курсовая работа', 4000],
     'practika': ['Практика(УП/ПП)', 2000],
@@ -30,10 +30,10 @@ deadline_text = {
 
 def choise_order_category(call, bot):
     global info_product
-    global categoru_texts
+    global category_texts
     category = call.data
-    info_product['Категория работы'] = categoru_texts[category][0]
-    info_product['Расчетная стоимость'] = categoru_texts[category][1]
+    info_product['Категория работы'] = category_texts[category][0]
+    info_product['Расчетная стоимость'] = category_texts[category][1]
 
 
 def choise_order_type(call, bot):
@@ -50,12 +50,19 @@ def choise_order_deadline(call, bot):
     info_product['Сроки'] = deadline_text[category][0]
     info_product['Расчетная стоимость'] *= deadline_text[category][1]
 
-def last_craete_order_message(call, bot):
+def last_create_order_message(call, bot):
     global info_product
-    message = f"""
-    Ваш заказ:\n№ заказа - #1\nКатегория работы - {info_product['Категория работы']}\nТип работы - {info_product['Тип работы']}\nСроки - {info_product['Сроки']}\nРасчетная стоимость - {info_product['Расчетная стоимость']}\n\n*- Окончательная стоимость - (добавляется после подтверждения заказа у администратора)
-    """
-    bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=message)
+
+    ttl1 = '*Ваш заказ:*\n'
+    ttl2 = '*№ заказа* - #1\n'
+    ttl3 = f"*Категория работы* - {info_product['Категория работы']}\n"
+    ttl4 = f"*Тип работы* - {info_product['Тип работы']}\n"
+    ttl5 = f"*Сроки* - {info_product['Сроки']}\n"
+    ttl6 = f"*Расчетная стоимость* - {info_product['Расчетная стоимость']}\n"
+    ttl7 = '*(Окончательная стоимость зависит от сложности работы, и может отличаться от расчетной)*'
+    total_message = ttl1 + ttl2 + ttl3 + ttl4 + ttl5 + ttl6 + ttl7
+
+    bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=total_message, parse_mode="Markdown")
 
 
 

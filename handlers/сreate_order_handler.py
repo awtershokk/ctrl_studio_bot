@@ -6,7 +6,7 @@ info_product = {
     'Тип работы': None,
     'Сроки': None,
     'Расчетная стоимость': None,
-    'Статус': None
+
 }
 category_texts= {
     'diplom': ['Дипломная работа', 9000],

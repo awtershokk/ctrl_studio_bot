@@ -39,12 +39,16 @@ def select_client_orders(conn, client_id):
 def select_client_username(conn, client_id):
     query = '''
         SELECT client_username FROM clients
-        WHERE client_id =?
+        WHERE client_id = ?
     '''
     try:
         cursor = conn.execute(query, (client_id,))
-        rows = cursor.fetchall()
-        return rows
+        result = cursor.fetchone()
+        if result:
+            client_username = f"@{result[0]}"
+            return client_username
+        else:
+            return None
     except sqlite3.Error as e:
         print(e)
 def selecct_client_draft_orders(conn, client_id):

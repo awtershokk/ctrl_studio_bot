@@ -32,7 +32,8 @@ def edit_order(call, bot):
     select_category_keyboard.add(lab_button)
     select_category_keyboard.add(another_button)
 
-    bot.edit_message_text(chat_id=call.chat.id, message_id=call.message_id, text='⏳ Выберите категорию работы:', reply_markup=select_category_keyboard)
+    bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='⏳ Выберите категорию работы:', reply_markup=select_category_keyboard)
+
 def select_order_type(message, bot):
     select_order_type_keyboard = types.InlineKeyboardMarkup()
 

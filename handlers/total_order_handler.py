@@ -1,5 +1,5 @@
 #(conn, client_id, client_name, order_category, order_type, order_deadline, order_price, order_status)
-from handlers.сreate_order import info_product
+from handlers.сreate_order_handler import info_product
 from database.db_functions import create_connection, insert_order
 from dotenv import load_dotenv
 import os

@@ -1,10 +1,9 @@
-import telebot
+from telebot import types
 from database.db_functions import selecct_client_draft_orders, select_client_orders ,create_connection
 conn = create_connection()
 def clients_order(call, bot):
     global conn
     client_id = call.message.from_user.id
-    print(client_id)
     rows = select_client_orders(conn, client_id)
     for row in rows:
         ttl1 = '*Ваш заказ:*\n'

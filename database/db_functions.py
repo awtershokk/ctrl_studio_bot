@@ -15,10 +15,10 @@ def create_connection():
         print(e)
     return conn
 
-def insert_order(conn, client_username, client_id, client_name, order_category, order_type, order_deadline, order_price, order_status, order_start):
+def insert_order(conn, client_username, client_id, client_name, order_category, order_type, order_deadline, order_price, order_status, order_start=None):
     query = '''
         INSERT INTO orders (client_username, client_id, client_name, order_category, order_type, order_deadline, order_price, order_status)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?,? )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     '''
     try:
         conn.execute(query, (client_username, client_id, client_name, order_category, order_type, order_deadline, order_price, order_status, order_start))
@@ -33,6 +33,7 @@ def select_client_orders(conn, client_id):
     try:
         cursor = conn.execute(query, (client_id,))
         rows = cursor.fetchall()
+        print("Returned rows:", len(rows))
         return rows
     except sqlite3.Error as e:
         print(e)

@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 from handlers.clients_order import clients_order
 from handlers.start_handler import start_handler
-from handlers.help_handler import help_handler
+from handlers.info_handler import help_handler
 from keyboards.main_reply_keyboard import create_reply_keyboard
 from keyboards.my_order import send_message_client_order
 from keyboards.order_inline_keyboards import select_order_category, select_order_type, select_order_deadline, edit_order
@@ -21,7 +21,7 @@ def handle_start(message):
     main_keyboard = create_reply_keyboard()
     start_handler(message, bot, main_keyboard)
 
-@bot.message_handler(commands=['help'])
+@bot.message_handler(commands=['info'])
 def handle_help(message):
     help_handler(message, bot)
 

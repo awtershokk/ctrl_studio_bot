@@ -17,7 +17,7 @@ def create_connection():
 
 def insert_order(conn, client_username, client_id, client_name, order_category, order_type, order_deadline, order_price, order_status, order_start=None):
     query = '''
-        INSERT INTO orders (client_username, client_id, client_name, order_category, order_type, order_deadline, order_price, order_status)
+        INSERT INTO orders (client_username, client_id, client_name, order_category, order_type, order_deadline, order_price, order_status, order_start)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     '''
     try:

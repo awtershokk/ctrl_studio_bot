@@ -20,6 +20,27 @@ def insert_order(conn, client_username, client_id, client_name, order_category, 
         conn.commit()
     except sqlite3.Error as e:
         print(e)
+def select_client_orders(conn, client_id):
+    query = '''
+        SELECT * FROM orders
+        WHERE client_id =?
+    '''
+    try:
+        cursor = conn.execute(query, (client_id,))
+        rows = cursor.fetchall()
+    except sqlite3.Error as e:
+        print(e)
+
+def selecct_client_draft_orders(conn, client_id):
+    query = '''
+        SELECT * FROM orders
+        WHERE client_id =? AND order_status = 'draft'
+    '''
+    try:
+        cursor = conn.execute(query, (client_id,))
+        rows = cursor.fetchall()
+    except sqlite3.Error as e:
+        print(e)
 
 def get_all_orders(conn):
     query = '''

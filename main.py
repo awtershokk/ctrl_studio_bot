@@ -2,7 +2,7 @@ import telebot
 import os
 from dotenv import load_dotenv
 from handlers.start_handler import start_handler
-from handlers.help_handler import help_handler
+from handlers.info_handler import help_handler
 from keyboards.main_reply_keyboard import create_reply_keyboard
 from keyboards.order_inline_keyboards import select_order_category, select_order_type, select_order_deadline, edit_order, myorder
 from handlers.сreate_order_handler import choise_order_category,  choise_order_type, choise_order_deadline, last_create_order_message
@@ -17,12 +17,9 @@ def handle_start(message):
     main_keyboard = create_reply_keyboard()
     start_handler(message, bot, main_keyboard)
 
-@bot.message_handler(commands=['help'])
+@bot.message_handler(commands=['info'])
 def handle_help(message):
     help_handler(message, bot)
-@bot.message_handler(commands=['s'])
-def handle_s():
-    myorder()
 
 @bot.message_handler(func=lambda message: message.text == "🛠 Создать заказ")
 def handle_create_order(message):

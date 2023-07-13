@@ -38,7 +38,7 @@ def select_client_orders(conn, client_id):
         print(e)
 def select_client_username(conn, client_id):
     query = '''
-        SELECT client_username FROM client
+        SELECT client_username FROM clients
         WHERE client_id =?
     '''
     try:

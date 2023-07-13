@@ -14,8 +14,6 @@ def send_message_client_order(message, bot):
     first_message_my_order.add(order_button)
     first_message_my_order.add(draft_button)
 
-    message = f'Имя: {client_username}\nКоличество заказов: {client_order_quantity}'
+    my_orders_message = f'Имя: {client_username}\nКоличество заказов: {client_order_quantity}'
 
-
-
-    bot.send_message(message.chat.id, '⏳ Выберите категорию работы:', reply_markup=first_message_my_order)
+    bot.send_message(message.chat.id, my_orders_message, reply_markup=first_message_my_order)

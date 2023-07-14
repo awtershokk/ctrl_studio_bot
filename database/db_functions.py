@@ -33,7 +33,6 @@ def select_client_orders(conn, client_id):
     try:
         cursor = conn.execute(query, (client_id,))
         rows = cursor.fetchall()
-        print("Returned rows:", len(rows))
         return rows
     except sqlite3.Error as e:
         print(e)
@@ -85,6 +84,13 @@ def update_order_status(conn, order_id, new_status):
         conn.commit()
     except sqlite3.Error as e:
         print(e)
+
+
+
+
+
+
+
 
 def confirm_order(conn, order_id, total_cost):
     global  admins

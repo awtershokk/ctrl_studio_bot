@@ -3,11 +3,11 @@ from database.db_functions import selecct_client_draft_orders, select_client_ord
 conn = create_connection()
 def clients_order(call, bot):
     global conn
-    client_id = call.message.from_user.id
+    client_id = call.from_user.id
     rows = select_client_orders(conn, client_id)
     for row in rows:
         ttl1 = '*Ваш заказ:*\n'
-        ttl2 = '*№ заказа* - #1\n'
+        ttl2 = f'*№ заказа* - #{row[0]}\n'
         ttl3 = f"*Категория работы* - {row[4]}\n"
         ttl4 = f"*Тип работы* - {row[5]}\n"
         ttl5 = f"*Сроки* - {row[6]}\n"

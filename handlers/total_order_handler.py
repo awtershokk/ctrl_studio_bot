@@ -40,7 +40,7 @@ def insert_draft_order(call, bot):
     order_price = info_product['Расчетная стоимость']
     order_status = 'draft'
     insert_order(conn, client_username, client_id, client_name, order_category, order_type, order_deadline, order_price, order_status)
-    bot.answer_callback_query(call.id, text="Ваш заказ сохранён в черновик, подтвердить или удалить его вы можете в разделе Мои заказы → Черновики", show_alert=True)
+    bot.answer_callback_query(call.id, text="📑 Ваш заказ сохранён в черновик, найти его можно в разделе Мои заказы → Черновики", show_alert=True)
 
 
 

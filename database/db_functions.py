@@ -60,6 +60,7 @@ def selecct_client_draft_orders(conn, client_id):
         cursor = conn.execute(query, (client_id,))
         rows = cursor.fetchall()
         return rows
+        print(len(rows))
     except sqlite3.Error as e:
         print(e)
 

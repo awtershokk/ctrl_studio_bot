@@ -20,8 +20,7 @@ def clients_order(call, bot):
 # client_username, client_id, client_name, order_category, order_type, order_deadline, order_price, order_status):
 def clients_draft_order(call, bot):
     global conn
-
-    client_id = call.message.from_user.id
+    client_id = call.from_user.id
     rows = selecct_client_draft_orders(conn, client_id)
     for row in rows:
         ttl1 = '*Ваш заказ:*\n'

@@ -2,7 +2,7 @@ import telebot
 import os
 from dotenv import load_dotenv
 
-from handlers.clients_order import clients_order
+from handlers.clients_order import clients_order, clients_draft_order
 from handlers.start_handler import start_handler
 from handlers.info_handler import help_handler
 from keyboards.main_reply_keyboard import create_reply_keyboard
@@ -62,5 +62,9 @@ def give_client_order(call):
 def save_to_draft(call):
     insert_draft_order(call,bot)
 
+
+@bot.callback_query_handler(func=lambda call: call.data == 'draft')
+def give_client_draft(call):
+    clients_draft_order(call, bot)
 
 bot.polling()

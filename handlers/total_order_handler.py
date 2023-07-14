@@ -28,6 +28,21 @@ def working_with_order_creation(call, bot):
         bot.send_message(chat_id=i, text=message_for_admin)
     bot.answer_callback_query(call.id, text="🥳 Успешно! Ваш заказ создан, скоро с вами свяжется администратор для уточнения деталей.", show_alert=True)
 
+def insert_draft_order(call, bot):
+    global conn
+    client_username = call.from_user.username
+    client_id = call.from_user.id
+    client_name = call.from_user.first_name
+
+    order_category = info_product['Категория работы']
+    order_type = info_product['Тип работы']
+    order_deadline = info_product['Сроки']
+    order_price = info_product['Расчетная стоимость']
+    order_status = 'draft'
+    insert_order(conn, client_username, client_id, client_name, order_category, order_type, order_deadline, order_price, order_status)
+    bot.answer_callback_query(call.id, text="Ваш заказ сохранён в черновик, подтвердить или удалить его вы можете в разделе Мои заказы → Черновики", show_alert=True)
+
+
 
 
 

@@ -4,7 +4,9 @@ import telebot
 from database.db_functions import selecct_client_draft_orders, select_client_orders ,create_connection
 conn = create_connection()
 status_on_ru ={
-    'Waiting':'Создан'
+    'Waiting':'Создан',
+    'Work':'месим вашу глину'
+
 }
 def clients_order(call, bot):
     global status_on_ru

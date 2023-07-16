@@ -9,6 +9,7 @@ info_product = {
     'Статус': 'Waiting'
 
 }
+
 category_texts= {
     'diplom': ['Дипломная работа', 9000],
     'kursovaya': ['Курсовая работа', 4000],

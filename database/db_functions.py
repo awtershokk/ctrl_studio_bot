@@ -28,7 +28,7 @@ def insert_order(conn, client_username, client_id, client_name, order_category, 
 def select_client_orders(conn, client_id):
     query = '''
         SELECT * FROM orders
-        WHERE client_id = ?'
+        WHERE client_id = ? AND order_status != 'draft'
     '''
     try:
         cursor = conn.execute(query, (client_id,))

@@ -1,7 +1,7 @@
 from telebot import types
 import telebot
 
-from database.db_functions import selecct_client_draft_orders, select_client_orders ,create_connection
+from database.db_functions import select_client_orders ,create_connection
 conn = create_connection()
 status_on_ru ={
     'Waiting':'Создан'
@@ -27,7 +27,7 @@ def clients_order(call, bot):
 def clients_draft_order(call, bot):
     global conn
     client_id = call.from_user.id
-    rows = selecct_client_draft_orders(conn, client_id)
+    rows = select_client_draft_orders(conn, client_id)
     draft_inline_message = types.InlineKeyboardMarkup()
     confirm_to_order_button = types.InlineKeyboardButton('✅ Создать заказ', callback_data='confirm_order')
     delete_draft_button = types.InlineKeyboardButton('⛔️ Удалить', callback_data='delete_draft')

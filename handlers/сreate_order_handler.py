@@ -17,6 +17,7 @@ category_texts= {
     'laborator': ['Лабораторная работа', 500],
     'another': ['Другое', 3000]
 }
+
 type_texts= {
     'site': 'Сайт',
     'desktop': 'Desktop приложение',
@@ -24,6 +25,7 @@ type_texts= {
     'console': 'Консольное приложение',
 
 }
+
 deadline_text = {
     'min1week': ['Меньше 1 недели', 2],
     'odna_dve_week': ['1-2 недели', 1.5],

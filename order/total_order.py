@@ -1,4 +1,4 @@
-from handlers.сreate_order_handler import info_product
+from order.сreate_order import info_product
 from database.db_functions import create_connection, insert_order
 from dotenv import load_dotenv
 import os

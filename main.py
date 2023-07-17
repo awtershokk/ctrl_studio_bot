@@ -2,14 +2,14 @@ import telebot
 import os
 from dotenv import load_dotenv
 
-from handlers.clients_order import clients_order
+from order.my_orders_button import clients_order
 from handlers.start_handler import start_handler
 from handlers.info_handler import help_handler
 from keyboards.main_reply_keyboard import create_reply_keyboard
-from keyboards.my_order import send_message_client_order
+from order.my_orders_menu import send_message_client_order
 from keyboards.order_inline_keyboards import select_order_category, select_order_type, select_order_deadline, edit_order
-from handlers.сreate_order_handler import choise_order_category,  choise_order_type, choise_order_deadline, last_create_order_message
-from handlers.total_order_handler import working_with_order_creation
+from order.сreate_order import choise_order_category,  choise_order_type, choise_order_deadline, last_create_order_message
+from order.total_order import working_with_order_creation
 
 
 load_dotenv()

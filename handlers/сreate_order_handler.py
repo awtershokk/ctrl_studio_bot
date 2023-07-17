@@ -69,11 +69,9 @@ def last_create_order_message(call, bot):
     total_keyboard = types.InlineKeyboardMarkup()
 
     create_order_button = types.InlineKeyboardButton("✅ Создать заказ", callback_data='create_order')
-    save_to_draft_button = types.InlineKeyboardButton("📂 Сохранить черновик", callback_data='save_to_draft')
     edit_order_button = types.InlineKeyboardButton("🔁 Изменить заказ", callback_data='edit_order')
 
     total_keyboard.add(create_order_button, edit_order_button)
-    total_keyboard.add(save_to_draft_button)
 
     bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=total_message, parse_mode="Markdown", reply_markup=total_keyboard)
 

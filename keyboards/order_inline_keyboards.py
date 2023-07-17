@@ -1,6 +1,4 @@
 from telebot import types
-from unicodedata import category
-import os
 
 def select_order_category(message, bot):
     select_category_keyboard = types.InlineKeyboardMarkup()

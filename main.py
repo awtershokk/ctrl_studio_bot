@@ -2,6 +2,7 @@ import telebot
 import os
 from dotenv import load_dotenv
 
+from handlers.feedback_handler import feedback
 from order.my_orders_button import clients_order
 from handlers.start_handler import start_handler
 from handlers.info_handler import help_handler
@@ -57,5 +58,7 @@ def handle_edit_order(call):
 @bot.callback_query_handler(func=lambda call: call.data == 'order')
 def give_client_order(call):
     clients_order(call, bot)
-
+@bot.message_handler(func=lambda message: message.text == "📞 Обратная связь")
+def feedback_on_main(message):
+    feedback(message, bot)
 bot.polling()

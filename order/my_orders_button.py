@@ -5,7 +5,7 @@ from database.db_functions import select_client_orders, create_connection
 conn = create_connection()
 
 status_on_ru ={
-    'Created':'Создан',
+    'Waiting':'Создан',
     'At_work':'В разработке',
     'Completed':'Выполнен'
 }

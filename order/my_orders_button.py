@@ -9,10 +9,10 @@ status_on_ru ={
     'At_work':'В разработке',
     'Completed':'Выполнен'
 }
-def clients_order(call, bot):
+def clients_order(message, bot):
     global status_on_ru
     global conn
-    client_id = call.from_user.id
+    client_id = message.from_user.id
     rows = select_client_orders(conn, client_id)
     for row in rows:
         ttl1 = '*Ваш заказ:*\n'
@@ -24,6 +24,6 @@ def clients_order(call, bot):
         ttl7 = f'Начало работы: {row[9]}\n'
         ttl8 = f'Статус: {status_on_ru[row[8]]}\n'
         total_message = ttl1 + ttl2 + ttl3 + ttl4 + ttl5 + ttl6 + ttl7 + ttl8
-        bot.send_message(chat_id=call.message.chat.id, text=total_message, parse_mode="Markdown")
+        bot.send_message(chat_id=message.chat.id, text=total_message, parse_mode="Markdown")
 
 

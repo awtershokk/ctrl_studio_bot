@@ -48,6 +48,15 @@ def handle_create_totalmessage(call):
     choise_order_deadline(call, bot)
     last_create_order_message(call, bot)
 
+@bot.callback_query_handler(func=lambda call: call.data == 'back_from_category')
+def back_from_category(call):
+    handle_select_type(call)
+
+@bot.callback_query_handler(func=lambda call: call.data == 'back_from_type')
+def back_from_type(call):
+    handle_select_deadline(call)
+
+
 @bot.callback_query_handler(func=lambda call: call.data == 'create_order')
 def handle_create_order(call):
     working_with_order_creation(call, bot)

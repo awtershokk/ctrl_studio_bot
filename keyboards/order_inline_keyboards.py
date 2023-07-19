@@ -8,7 +8,6 @@ def select_order_category(message, bot):
     practika_button = types.InlineKeyboardButton('Практика(УП/ПП)', callback_data='practika')
     lab_button = types.InlineKeyboardButton('Лабораторная работа', callback_data='laborator')
     another_button = types.InlineKeyboardButton('Другое', callback_data='another')
-    back_button = types.InlineKeyboardButton('')
 
     select_category_keyboard.add(diplom_button)
     select_category_keyboard.add(kurs_button)
@@ -26,11 +25,13 @@ def edit_order(call, bot):
     lab_button = types.InlineKeyboardButton('Лабораторная работа', callback_data='laborator')
     another_button = types.InlineKeyboardButton('Другое', callback_data='another')
 
+
     select_category_keyboard.add(diplom_button)
     select_category_keyboard.add(kurs_button)
     select_category_keyboard.add(practika_button)
     select_category_keyboard.add(lab_button)
     select_category_keyboard.add(another_button)
+    select_category_keyboard.add(back_button)
 
     bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='⏳ Выберите категорию работы:', reply_markup=select_category_keyboard)
 
@@ -41,11 +42,14 @@ def select_order_type(message, bot):
     desktop_button = types.InlineKeyboardButton('Desktop приложение', callback_data='desktop')
     tgbot_button = types.InlineKeyboardButton('Telegram бот', callback_data='tgbot')
     console_button = types.InlineKeyboardButton('Консольное приложение', callback_data='console')
+    back_button = types.InlineKeyboardButton('↩️', callback_data='back_from_category')
+
 
     select_order_type_keyboard.add(site_button)
     select_order_type_keyboard.add(desktop_button)
     select_order_type_keyboard.add(tgbot_button)
     select_order_type_keyboard.add(console_button)
+    select_order_type_keyboard.add(back_button)
 
     bot.edit_message_text(chat_id=message.chat.id, message_id=message.message_id, text='⏳ Выберите тип работы:', reply_markup=select_order_type_keyboard)
 
@@ -57,6 +61,7 @@ def select_order_deadline(message, bot):
     two_week_month_button = types.InlineKeyboardButton("2 недели - 1 месяц", callback_data='two_week_month')
     month_button = types.InlineKeyboardButton("1-2 месяца", callback_data='month-twomonth')
     two_month_more_button = types.InlineKeyboardButton("2 месяца и более" , callback_data='two-month_more')
+    back_button = types.InlineKeyboardButton('↩️', callback_data='back_from_type')
 
     select_order_deadline_keyboard.add(min_1week_button)
     select_order_deadline_keyboard.add(odna_dve_week_button)

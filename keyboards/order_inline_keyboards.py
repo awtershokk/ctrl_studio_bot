@@ -8,6 +8,7 @@ def select_order_category(message, bot):
     practika_button = types.InlineKeyboardButton('Практика(УП/ПП)', callback_data='practika')
     lab_button = types.InlineKeyboardButton('Лабораторная работа', callback_data='laborator')
     another_button = types.InlineKeyboardButton('Другое', callback_data='another')
+    back_button = types.InlineKeyboardButton('')
 
     select_category_keyboard.add(diplom_button)
     select_category_keyboard.add(kurs_button)

@@ -9,6 +9,7 @@ status_on_ru ={
     'At_work':'В разработке',
     'Completed':'Выполнен'
 }
+
 def clients_order(message, bot):
     global status_on_ru
     global conn

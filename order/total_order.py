@@ -22,6 +22,7 @@ def working_with_order_creation(call, bot):
 
     message_for_admin = f"НОВЫЙ ЗАКАЗ\nЗаказчик @{client_username}\nКатегория работы: {info_product['Категория работы']}\nТип работы: {info_product['Тип работы']}\nСроки: {info_product['Сроки']}\nРасчетная стоимость: {info_product['Расчетная стоимость']}\nСтатус: {info_product['Статус']}"
     bot.send_message(chat_id=admin, text=message_for_admin)
+
     bot.answer_callback_query(call.id, text="🥳 Успешно! Ваш заказ создан, скоро с вами свяжется администратор для уточнения деталей.", show_alert=True)
 
 

@@ -1,12 +1,9 @@
 import datetime
 import os
 import sqlite3
-from dotenv import load_dotenv
 
 DATABASE_NAME = 'orders.db'
-admin1 = os.getenv('ADMIN1')
-admin2 = os.getenv('ADMIN2')
-admins = [admin1, admin2]
+
 def create_connection():
     conn = None
     try:
@@ -36,6 +33,7 @@ def select_client_orders(conn, client_id):
         return rows
     except sqlite3.Error as e:
         print(e)
+
 def select_client_username(conn, client_id):
     query = '''
         SELECT client_username FROM clients
@@ -74,27 +72,3 @@ def update_order_status(conn, order_id, new_status):
     except sqlite3.Error as e:
         print(e)
 
-
-
-
-
-
-
-
-def confirm_order(conn, order_id, total_cost):
-    global  admins
-    query = '''
-        UPDATE orders
-        SET order_status = ?
-        SET order_start = ?
-        SET order_price = ?
-        WHERE order_id = ?
-    '''
-    order_status = 'at_work'
-    order_start = datetime.now()
-
-    try:
-        conn.execute(query, (total_cost, order_id))
-        conn.commit()
-    except sqlite3.Error as e:
-        print(e)

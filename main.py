@@ -1,7 +1,6 @@
 import telebot
 import os
 from dotenv import load_dotenv
-
 from handlers.feedback_handler import feedback
 from order.my_orders_button import clients_order
 from handlers.start_handler import start_handler
@@ -10,7 +9,7 @@ from keyboards.main_reply_keyboard import create_reply_keyboard
 from keyboards.order_inline_keyboards import select_order_category, select_order_type, select_order_deadline, edit_order
 from order.сreate_order import choise_order_category,  choise_order_type, choise_order_deadline, last_create_order_message
 from order.total_order import working_with_order_creation
-
+from handlers.reviews_handler import rev_handler
 
 load_dotenv()
 token = os.getenv('BOT_TOKEN')
@@ -33,6 +32,14 @@ def handle_create_order(message):
 def handle_my_orders(message):
     clients_order(message, bot)
 
+@bot.message_handler(func=lambda message: message.text == "📞 Обратная связь")
+def feedback_on_main(message):
+    feedback(message, bot)
+
+@bot.message_handler(func=lambda message: message.text == "📝 Отзывы")
+def feedback_on_main(message):
+    rev_handler(message, bot)
+
 @bot.callback_query_handler(func=lambda call: call.data in ['diplom', 'kursovaya', 'practika', 'laborator', 'another'])
 def handle_select_type(call):
     choise_order_category(call, bot)
@@ -51,11 +58,9 @@ def handle_create_totalmessage(call):
 @bot.callback_query_handler(func=lambda call: call.data == 'create_order')
 def handle_create_order(call):
     working_with_order_creation(call, bot)
+
 @bot.callback_query_handler(func=lambda call: call.data == 'edit_order')
 def handle_edit_order(call):
     edit_order(call, bot)
 
-@bot.message_handler(func=lambda message: message.text == "📞 Обратная связь")
-def feedback_on_main(message):
-    feedback(message, bot)
 bot.polling()

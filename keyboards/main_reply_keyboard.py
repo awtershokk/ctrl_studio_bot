@@ -1,4 +1,5 @@
 from telebot import types
+
 def create_reply_keyboard():
     main_keyboard = types.ReplyKeyboardMarkup(row_width=2, resize_keyboard=True)
 

@@ -17,6 +17,7 @@ def select_order_category(message, bot):
     select_category_keyboard.add(another_button)
 
     bot.send_message(message.chat.id, '⏳ Выберите категорию работы:', reply_markup=select_category_keyboard)
+
 def edit_order(call, bot):
     select_category_keyboard = types.InlineKeyboardMarkup()
 

@@ -1,4 +1,3 @@
-from keyboards.order_inline_keyboards import select_order_type, select_order_deadline
 from telebot import types
 
 info_product = {
@@ -41,13 +40,11 @@ def choise_order_category(call, bot):
     info_product['Категория работы'] = category_texts[category][0]
     info_product['Расчетная стоимость'] = category_texts[category][1]
 
-
 def choise_order_type(call, bot):
     global info_product
     global type_texts
     types = call.data
     info_product['Тип работы'] = type_texts[types]
-
 
 def choise_order_deadline(call, bot):
     global info_product

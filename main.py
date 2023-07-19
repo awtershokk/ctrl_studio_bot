@@ -49,12 +49,12 @@ def handle_create_totalmessage(call):
     last_create_order_message(call, bot)
 
 @bot.callback_query_handler(func=lambda call: call.data == 'back_from_category')
-def back_from_category(call):
-    handle_select_type(call)
+def back_from_category():
+    handle_select_type()
 
 @bot.callback_query_handler(func=lambda call: call.data == 'back_from_type')
-def back_from_type(call):
-    handle_select_deadline(call)
+def back_from_type():
+    handle_select_deadline()
 
 
 @bot.callback_query_handler(func=lambda call: call.data == 'create_order')

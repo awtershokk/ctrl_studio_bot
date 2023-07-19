@@ -24,7 +24,7 @@ def edit_order(call, bot):
     practika_button = types.InlineKeyboardButton('Практика(УП/ПП)', callback_data='practika')
     lab_button = types.InlineKeyboardButton('Лабораторная работа', callback_data='laborator')
     another_button = types.InlineKeyboardButton('Другое', callback_data='another')
-
+    back_button = types.InlineKeyboardButton('↩️', callback_data='back_from_category')
 
     select_category_keyboard.add(diplom_button)
     select_category_keyboard.add(kurs_button)
@@ -68,6 +68,7 @@ def select_order_deadline(message, bot):
     select_order_deadline_keyboard.add(two_week_month_button)
     select_order_deadline_keyboard.add(month_button)
     select_order_deadline_keyboard.add(two_month_more_button)
+    select_order_deadline_keyboard.add(back_button)
 
     bot.edit_message_text(chat_id=message.chat.id, message_id=message.message_id, text='⏳ Выберите сроки выполнения работы:', reply_markup=select_order_deadline_keyboard)
 

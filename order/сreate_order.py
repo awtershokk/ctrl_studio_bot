@@ -57,13 +57,12 @@ def last_create_order_message(call, bot):
     global info_product
 
     ttl1 = '*Ваш заказ:*\n'
-    ttl2 = '*№ заказа* - #1\n'
-    ttl3 = f"*Категория работы* - {info_product['Категория работы']}\n"
-    ttl4 = f"*Тип работы* - {info_product['Тип работы']}\n"
-    ttl5 = f"*Сроки* - {info_product['Сроки']}\n"
-    ttl6 = f"*Расчетная стоимость* - {info_product['Расчетная стоимость']}\n"
-    ttl7 = '*(Окончательная стоимость зависит от сложности работы, и может отличаться от расчетной, как в меньшую, так и в большую сторону)*'
-    total_message = ttl1 + ttl2 + ttl3 + ttl4 + ttl5 + ttl6 + ttl7
+    ttl2 = f"*Категория работы* - {info_product['Категория работы']}\n"
+    ttl3 = f"*Тип работы* - {info_product['Тип работы']}\n"
+    ttl4 = f"*Сроки* - {info_product['Сроки']}\n"
+    ttl5 = f"*Расчетная стоимость* - {info_product['Расчетная стоимость']}\n"
+    ttl6 = '*(Окончательная стоимость зависит от сложности работы и может отличаться от расчетной, как в меньшую, так и в большую сторону)*'
+    total_message = ttl1 + ttl2 + ttl3 + ttl4 + ttl5 + ttl6
 
     total_keyboard = types.InlineKeyboardMarkup()
 

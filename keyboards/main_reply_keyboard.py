@@ -5,10 +5,10 @@ def create_reply_keyboard():
 
     create_order_button = "🛠 Создать заказ"
     my_orders_button = "👤 Мои заказы"
-    feedback_button = "📞 Обратная связь"
+    feedback_button = "ℹ️ Инфо"
     reviews_button = "📝 Отзывы"
 
     main_keyboard.add(create_order_button, my_orders_button)
-    main_keyboard.add(feedback_button, reviews_button)
+    main_keyboard.add(feedback_button)
 
     return main_keyboard

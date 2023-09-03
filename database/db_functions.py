@@ -12,7 +12,7 @@ def create_connection():
         print(e)
     return conn
 
-def insert_order(conn, client_username, client_id, client_name, order_category, order_type, order_deadline, order_price, order_status, order_start='-'):
+def insert_order(conn, client_username, client_id, client_name, order_category, order_type, order_deadline, order_price, order_status, order_start=''):
     query = '''
         INSERT INTO orders (client_username, client_id, client_name, order_category, order_type, order_deadline, order_price, order_status, order_start)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)

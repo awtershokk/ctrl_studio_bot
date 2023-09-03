@@ -32,7 +32,7 @@ def handle_create_order(message):
 def handle_my_orders(message):
     clients_order(message, bot)
 
-@bot.message_handler(func=lambda message: message.text == "📞 Обратная связь")
+@bot.message_handler(func=lambda message: message.text == "ℹ️ Инфо")
 def feedback_on_main(message):
     feedback(message, bot)
 
